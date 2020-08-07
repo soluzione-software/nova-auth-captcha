@@ -1,0 +1,30 @@
+{
+    "name": "soluzione-software/nova-auth-captcha",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yuriy Martini",
+            "email": "y.martini@soluzionesoftware.com",
+            "homepage": "https://github.com/yuriy-martini",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "biscolab/laravel-recaptcha": "^4.1",
+        "illuminate/support": "5.8.*",
+        "laravel/nova": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SoluzioneSoftware\\Nova\\AuthCaptcha\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SoluzioneSoftware\\Nova\\AuthCaptcha\\ServiceProvider"
+            ]
+        }
+    }
+}
