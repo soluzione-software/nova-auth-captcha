@@ -23,3 +23,8 @@ Edit `.env` file as described in https://laravel-recaptcha-docs.biscolab.com/doc
 
 (Optional) Edit translation files as described in https://laravel-recaptcha-docs.biscolab.com/docs/configuration#customize-error-message
 
+### Disabling locally
+Add the following line to `.env` in order to disable the captcha: 
+```env
+NOVA_AUTH_CAPTCHA_ENABLED=false
+```
