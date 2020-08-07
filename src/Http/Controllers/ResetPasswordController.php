@@ -2,6 +2,8 @@
 
 namespace SoluzioneSoftware\Nova\AuthCaptcha\Http\Controllers;
 
+use Illuminate\Support\Facades\Config;
+
 class ResetPasswordController extends \Laravel\Nova\Http\Controllers\ResetPasswordController
 {
     /**
@@ -9,6 +11,11 @@ class ResetPasswordController extends \Laravel\Nova\Http\Controllers\ResetPasswo
      */
     public function rules()
     {
-        return array_merge(parent::rules(), ['g-recaptcha-response' => 'required|recaptcha']);
+        return array_merge(parent::rules(), [
+            'g-recaptcha-response' => [
+                Config::get('nova_auth_captcha.enabled') ? 'required' : 'nullable',
+                'recaptcha',
+            ],
+        ]);
     }
 }

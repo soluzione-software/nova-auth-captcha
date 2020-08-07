@@ -23,6 +23,7 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->views();
+        $this->config();
     }
 
     private function views()
@@ -36,5 +37,14 @@ class ServiceProvider extends BaseServiceProvider
         ], ['views', 'nova-auth-captcha', 'nova-auth-captcha-package-views']);
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views/package', 'nova-auth-captcha');
+    }
+
+    private function config()
+    {
+        $this->publishes([
+            __DIR__ . '/../config/nova_auth_captcha.php' => App::configPath('nova_auth_captcha.php'),
+        ], ['config', 'nova-auth-captcha', 'nova-auth-captcha-config']);
+
+        $this->mergeConfigFrom(__DIR__ . '/../config/nova_auth_captcha.php', 'nova_auth_captcha');
     }
 }
