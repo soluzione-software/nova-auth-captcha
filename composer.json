@@ -15,6 +15,12 @@
         "illuminate/support": "5.8.*|^6.0",
         "laravel/nova": "~2.0"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "SoluzioneSoftware\\Nova\\AuthCaptcha\\": "src"

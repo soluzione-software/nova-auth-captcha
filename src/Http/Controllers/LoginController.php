@@ -3,22 +3,20 @@
 namespace SoluzioneSoftware\Nova\AuthCaptcha\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
+use SoluzioneSoftware\Nova\AuthCaptcha\Traits\ValidatesCaptcha;
 
 class LoginController extends \Laravel\Nova\Http\Controllers\LoginController
 {
+    use ValidatesCaptcha;
+
     /**
      * @inheritDoc
      */
     public function validateLogin(Request $request)
     {
-        $request->validate([
+        $request->validate($this->appendCaptchaValidationRules([
             $this->username() => 'required|string',
             'password' => 'required|string',
-            'g-recaptcha-response' => [
-                Config::get('nova_auth_captcha.enabled') ? 'required' : 'nullable',
-                'recaptcha',
-            ],
-        ]);
+        ]));
     }
 }
